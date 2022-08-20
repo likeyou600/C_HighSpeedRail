@@ -1,0 +1,243 @@
+1
+N123456789
+4   7
+2
+2
+2022/09/15
+17:00
+1/2
+Y
+2/1
+N
+Y
+2
+9527
+Y
+3
+9527
+4
+N123456789
+5
+9527
+1
+1/6
+Y
+2/1
+N
+Y
+6
+1   7
+2
+7
+
+1. 票價如何算出來的？
+Ans: 票價可自訂，抑或是參考實際台鐵（or高鐵）票價。
+
+2. 主選單的 (5) Amendment of reservation record、(6) Check the fare、(7) End the booking system 呈現結果？
+Ans:
+(5) 修改預約紀錄：這部分至少要能修改一項資訊，沒有限制修改哪一項資訊，但要在介面與document裡說明是可以修改哪一項。
+(6) 查詢票價：兩個地點之間各個票種的票價。
+(7) 離開系統：顯示離開之類的訊息即可。
+3. Booking code 9527是如何產生的？
+
+Ans：隨機產生，或是自訂規則（例如流水號之類的）即可 
+
+4. 錯誤處理
+Ans：發生錯誤要能秀出訊息讓使用者知道，並直接返回主選單。 
+
+5. 是否可以重複訂票
+Ans：可重複訂票
+
+
+【High-speed rail booking system】
+
+Please note that 0 point will be given if the program does not use the Linked List structure
+
+The following functions are required:
+
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+
+Please think about the exception handling for the above functions, for example:
+(1) If there is no booking, when you choose to cancel the ticket, the message of no booking should be displayed
+(2) For any part with options, if the input is wrong, there should be error handling
+
+Think of the program as a formal system, meaning there are instructions on the system, such as:
+(1) Tell the user how to enter options (whether spaces or slashes are required, etc.)
+(2) Before entering the option to end the booking, the system should maintain the execution state.
+
+-----------------------------
+
+You can refer to the following program examples (not showing all functions)
+
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 1
+
+Please enter your ID: N123456789
+
+Please enter the starting and ending stations according to the county and city numbers
+1. Nangang 2. Taipei 3. Banqiao 4. Taoyuan 5. Hsinchu 6. Miaoli
+7. Taichung 8. Changhua 9. Yunlin 10. Chiayi 11. Tainan 12. Kaohsiung
+Departure Station/Arrival Station >> 4 7
+
+Please enter the type of car 1. Standard class 2. Business class >> 2
+
+Seat preference 1. None 2. Window priority 3. Aisle priority >> 2
+
+Date (Year/Month/Day) >> 2022/09/15
+
+Time (hour:minute) >> 17:00
+
+Please enter the type and number of tickets according to the following numbers (ex: Please enter 1/2 for two full tickets)
+1. Full ticket (original price) 2. Child ticket (6-11 years old) (40% off) 3. Love ticket (50% off) 4. Senior ticket (over 65 years old) (40% off) 5. College student discount ticket (20% off)
+Please enter >> 1/2
+Do you want to enter other ticket types (Y/N) >> Y
+Please enter the type and number of tickets according to the following numbers (ex: Please enter 1/2 for two full tickets)
+1. Full ticket (original price) 2. Child ticket (6-11 years old) (40% off) 3. Love ticket (50% off) 4. Senior ticket (over 65 years old) (40% off) 5. College student discount ticket (20% off)
+Please enter >> 2/1
+Do you want to enter another ticket type (Y/N) >> N
+
+Your booking information is as follows:
+Departure station: Taoyuan to Taichung
+Type of carriage: business carriage
+Seat preference: Window preference
+Date/Time: 2022/09/15 17:00
+Number of tickets: 2 full tickets, 1 child ticket (6-11 years old)
+Cost: TW 2626
+Are you sure you want to book a ticket (Y/N) >> Y //If you press N, the ticket will be booked from the beginning
+
+Booking is successful! Your booking code is 9527
+
+-------
+
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 2
+
+Please enter the booking code: 9527
+
+Your booking information is as follows:
+Departure station: Taoyuan to Taichung
+Type of carriage: business carriage
+Seat preference: Window preference
+Date/Time: 2022/09/15 17:00
+Number of tickets: 2 full tickets, 1 child ticket (6-11 years old)
+Cost: TW 2626 
+Are you sure you want to cancel the reservation (Y/N) >> Y
+
+The reservation record has been cancelled!
+
+------
+
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 3
+
+Please enter the booking code: 9527
+
+Your booking information is as follows:
+Departure station: Taoyuan to Taichung
+Type of carriage: business carriage
+Seat preference: Window preference
+Date/Time: 2022/09/15 17:00
+Number of tickets: 2 full tickets, 1 child ticket (6-11 years old)
+Cost: TW 2626 
+
+Press any key to continue...
+
+------
+
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 4
+
+Please enter your ID: N123456789
+
+Your booking code: 9527
+
+-----
+
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 5
+
+Please enter booking code: 9527
+Which do you want to modify ? 1. Ticket (type and number) 2. Date >> 2
+New Date (Year/Month/Day) >> 2022/08/09
+New Time (hour:minute) >> 12:00
+Confirm (Y/N) >> Y
+
+Your booking information is as follows:
+Departure station: Taoyuan to Taichung
+Type of carriage: business carriage
+Seat preference: Window preference
+Date/Time: 2022/08/09 12:00
+Number of tickets: 2 full tickets, 1 child ticket (6-11 years old)
+Cost: TW 2626
+
+Press any key to continue...
+
+------
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 6
+
+Please enter the starting and ending stations according to the county and city numbers
+1. Nangang 2. Taipei 3. Banqiao 4. Taoyuan 5. Hsinchu 6. Miaoli
+7. Taichung 8. Changhua 9. Yunlin 10. Chiayi 11. Tainan 12. Kaohsiung
+Departure Station/Arrival Station >> 4 7
+
+Please enter the type of tickets according to the following numbers
+1. Full ticket (original price) 2. Child ticket (6-11 years old) (40% off) 3. Love ticket (50% off) 4. Senior ticket (over 65 years old) (40% off) 5. College student discount ticket (20% off)
+Please enter >> 1
+
+The Full ticket from Taoyuan to Taichung is TW 540
+
+Press any key to continue...
+------
+(1) Booking
+(2) Cancellation of booked tickets
+(3) Booking record query
+(4) Check the booking code
+(5) Amendment of reservation record
+(6) Check the fare
+(7) End the booking system
+Please enter function >> 7
+
+High-speed rail booking system exited…
