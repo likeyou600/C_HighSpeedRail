@@ -2,7 +2,9 @@
 
 void menu(int select)
 {
-
+    printf("\r\n");
+    printf("------\r\n");
+    printf("\r\n");
     printf("(1) Booking\r\n");
     printf("(2) Cancellation of booked tickets\r\n");
     printf("(3) Booking record query\r\n");
@@ -37,9 +39,11 @@ void menu(int select)
     case 7:
         break;
     default:
+        printf("Error,please enter correct menu number");
+        printf("\r\n");
+
         break;
     }
-
 }
 void Cancellation()
 {
@@ -51,12 +55,14 @@ void Cancellation()
     if (!check_passenger_exist(code))
     {
         printf("%s not exists,the last generate code is %s , will use the last code\r\n", code, newcode);
+        printf("\r\n");
         code = strdup(newcode);
     }
 
     getpassenger(code);
     printf("Are you sure you want to cancel the reservation (Y/N) >> ");
 
+    const long pos = ftell(input_file); //紀錄目前讀到哪
     char check = ' ';
     fscanf(input_file, " %c", &check);
     printf("%c ", check);
@@ -66,14 +72,17 @@ void Cancellation()
         return;
     else if (check == 'Y' || check == 'y')
     {
-        // deletepassenger(code);
+        deletepassenger(code);
         printf("\r\n");
         printf("The reservation record has been cancelled!\r\n");
         printf("\r\n");
     }
     else
     {
-        printf("noinput \r\n");
+        printf("\r\n");
+        printf("The Y/N data is missing in the test file, it is recommended to rewrite the test file, which has been automatically canceled\r\n");
+        printf("\r\n");
+        fseek(input_file, pos, SEEK_SET);
     }
 }
 void Record()
@@ -86,13 +95,12 @@ void Record()
     if (!check_passenger_exist(code))
     {
         printf("%s not exists,the last generate code is %s , will use the last code\r\n", code, newcode);
+        printf("\r\n");
         code = strdup(newcode);
     }
     getpassenger(code);
     printf("\r\n");
     printf("Press any key to continue...\r\n");
-    printf("\r\n");
-    printf("------\r\n");
 }
 void Checkcode()
 {
@@ -104,8 +112,6 @@ void Checkcode()
     getbookingcode(userID);
     printf("\r\n");
     printf("Press any key to continue...\r\n");
-    printf("\r\n");
-    printf("------\r\n");
 }
 void Amendment()
 {
@@ -186,9 +192,12 @@ void Amendment()
             printf("\r\n");
         }
         printf("Confirm (Y/N) >> ");
+
+        const long pos = ftell(input_file); //紀錄目前讀到哪
+
         char check;
         fscanf(input_file, " %c", &check);
-        printf("%c ", check);
+        printf("%c \r\n", check);
         printf("\r\n");
         if (check == 'N' || check == 'n')
             return;
@@ -199,12 +208,14 @@ void Amendment()
             getpassenger(code);
             printf("\r\n");
             printf("Press any key to continue...\r\n");
-            printf("\r\n");
-            printf("------\r\n");
         }
         else
         {
-            printf("noinput \r\n");
+            printf("\r\n");
+            printf("The Y/N data is missing in the test file, it is recommended to rewrite the test file, which has been automatically canceled\r\n");
+            printf("\r\n");
+
+            fseek(input_file, pos, SEEK_SET);
         }
 
         break;
@@ -232,8 +243,6 @@ void Amendment()
             getpassenger(code);
             printf("\r\n");
             printf("Press any key to continue...\r\n");
-            printf("\r\n");
-            printf("------\r\n");
         }
         else
         {
@@ -267,6 +276,7 @@ void Checkfare()
     printf("Please enter >> ");
     fscanf(input_file, "%d", &type);
     printf("%d\r\n", type);
+    printf("\r\n");
 
     double price = calticketprice(station_from, station_to);
 
@@ -301,6 +311,4 @@ void Checkfare()
     printf("The %s from %s to %s is TW %d \r\n", text_type, station_from_name, station_to_name, sum);
     printf("\r\n");
     printf("Press any key to continue...\r\n");
-    printf("\r\n");
-    printf("------\r\n");
 }

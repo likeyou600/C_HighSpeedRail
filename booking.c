@@ -140,6 +140,8 @@ void Booking()
     printf("Number of tickets: %s\r\n", outtype);
     printf("Cost: TW %d\r\n", cost);
     printf("Are you sure you want to book a ticket (Y/N) >> ");
+
+    const long pos = ftell(input_file); //紀錄目前讀到哪
     fscanf(input_file, " %c", &check);
     printf("%c ", check);
     printf("//If you press N, the ticket will be booked from the beginning\r\n");
@@ -157,8 +159,14 @@ void Booking()
     }
     else
     {
-        printf("noinput \r\n");
+        printf("\r\n");
+        printf("The Y/N data is missing in the test file, it is recommended to rewrite the test file, which has been automatically booking\r\n");
+        printf("\r\n");
+        char *code = addpassenger(userID,
+                                  station_from, station_to, char_carriage,
+                                  char_seat, date, time, outtype, cost);
+
+        printf("Booking is successful! Your booking code is %s \r\n", code);
+        fseek(input_file, pos, SEEK_SET);
     }
-    printf("-------\r\n");
-    printf("\r\n");
 }
