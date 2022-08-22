@@ -2,6 +2,7 @@
 
 int main(void)
 {
+    srand(time(NULL));    
     citylist = makecitylist();
     passengerlist = makepassengerlist();
 

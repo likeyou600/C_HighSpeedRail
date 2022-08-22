@@ -9,7 +9,6 @@
 
 FILE *input_file;
 char *newcode;
-
 void loadfile();
 void addTaiwanCity();
 
@@ -55,5 +54,9 @@ void destroy_passenger_list();
 
 int get_station_from(char *code);
 int get_station_to(char *code);
+
+bool date_validating(int yy, int mm, int dd);
+bool time_validating(int hour, int second);
+
 
 #endif

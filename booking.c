@@ -9,11 +9,15 @@ void Booking()
     char *char_carriage = malloc(0);
     int int_seat;
     char *char_seat = malloc(0);
-    char *date = malloc(0);
-    char *time = malloc(0);
     char *type = malloc(0);
     char *outtype = malloc(300 * sizeof(char));
     memset(outtype, 0x00, 300);
+
+    char *date = malloc(10 * sizeof(char));
+    memset(date, 0x00, 10);
+
+    char *time = malloc(10 * sizeof(char));
+    memset(time, 0x00, 10);
 
     char defaultcheck = 'Y';
     char check = 'Y';
@@ -67,16 +71,45 @@ void Booking()
         break;
     }
     printf("\r\n");
+    const long pos = ftell(input_file); //紀錄目前讀到哪
 
     printf("Date (Year/Month/Day) >> ");
     fscanf(input_file, "%s", date);
     printf("%s\r\n", date);
+    fseek(input_file, pos, SEEK_SET);
+
+    int dd, mm, yy;
+    fscanf(input_file, "%d/%d/%d", &yy, &mm, &dd);
+
+    if (!date_validating(yy, mm, dd))
+    {
+        printf("date format is error, it is recommended to rewrite the test file , Automatically substituted for another date  \r\n");
+        memset(date, 0x00, 10);
+        strcat(date, "2022/08/30");
+        printf("%s\r\n", date);
+        printf("\r\n");
+    }
+
     printf("\r\n");
+
+    const long pos2 = ftell(input_file); //紀錄目前讀到哪
 
     printf("Time (hour:minute) >> ");
     fscanf(input_file, "%s", time);
     printf("%s\r\n", time);
-    printf("\r\n");
+    fseek(input_file, pos2, SEEK_SET);
+
+    int minutes, second;
+    fscanf(input_file, "%d:%d", &minutes, &second);
+
+    if (!time_validating(minutes, second))
+    {
+        printf("time format is error, it is recommended to rewrite the test file , Automatically substituted for another time  \r\n");
+        memset(time, 0x00, 10);
+        strcat(time, "12:00");
+        printf("%s\r\n", time);
+        printf("\r\n");
+    }
 
     double price = calticketprice(station_from, station_to);
     int cost = 0;
@@ -141,7 +174,7 @@ void Booking()
     printf("Cost: TW %d\r\n", cost);
     printf("Are you sure you want to book a ticket (Y/N) >> ");
 
-    const long pos = ftell(input_file); //紀錄目前讀到哪
+    const long pos4 = ftell(input_file); //紀錄目前讀到哪
     fscanf(input_file, " %c", &check);
     printf("%c ", check);
     printf("//If you press N, the ticket will be booked from the beginning\r\n");
@@ -167,6 +200,6 @@ void Booking()
                                   char_seat, date, time, outtype, cost);
 
         printf("Booking is successful! Your booking code is %s \r\n", code);
-        fseek(input_file, pos, SEEK_SET);
+        fseek(input_file, pos4, SEEK_SET);
     }
 }
