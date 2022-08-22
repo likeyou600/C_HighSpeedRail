@@ -59,7 +59,7 @@ void Cancellation()
         code = strdup(newcode);
     }
 
-    getpassenger(code);
+    print_passenger_data(code);
     printf("Are you sure you want to cancel the reservation (Y/N) >> ");
 
     const long pos = ftell(input_file); //紀錄目前讀到哪
@@ -98,7 +98,7 @@ void Record()
         printf("\r\n");
         code = strdup(newcode);
     }
-    getpassenger(code);
+    print_passenger_data(code);
     printf("\r\n");
     printf("Press any key to continue...\r\n");
 }
@@ -205,7 +205,7 @@ void Amendment()
         {
             change_passenger_typeprice(code, outtype, cost);
 
-            getpassenger(code);
+            print_passenger_data(code);
             printf("\r\n");
             printf("Press any key to continue...\r\n");
         }
@@ -240,7 +240,7 @@ void Amendment()
         {
             change_passenger_datetime(code, date, time);
 
-            getpassenger(code);
+            print_passenger_data(code);
             printf("\r\n");
             printf("Press any key to continue...\r\n");
         }
@@ -263,7 +263,7 @@ void Checkfare()
     char *text_type = malloc(0);
     int sum = 0;
     printf("Please enter the starting and ending stations according to the county and city numbers\r\n");
-    displayallcity(citylist);
+    print_allcity(citylist);
     printf("\r\n");
     printf("Departure Station/Arrival Station >> ");
 

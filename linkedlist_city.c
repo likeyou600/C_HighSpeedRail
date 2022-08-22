@@ -70,7 +70,7 @@ void addcity(int No, char *cityname, int fare)
         current->next = createcity(No, cityname, fare);
     }
 }
-void displayallcity()
+void print_allcity()
 {
     City *current = citylist->head;
     if (citylist->head == NULL)
@@ -82,7 +82,6 @@ void displayallcity()
         if (No == 7)
             printf("\r\n");
         printf("%d. %s ", current->No, current->cityname);
-        // printf("city:%s price:%d \n", current->cityname, current->fare);
     }
 }
 int calticketprice(int from, int to)

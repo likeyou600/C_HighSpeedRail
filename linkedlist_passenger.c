@@ -96,7 +96,7 @@ void gen_code(char **code)
     newcode = buf;
     *code = buf;
 }
-void getpassenger(char *code)
+void print_passenger_data(char *code)
 {
     Passenger *current = passengerlist->head;
     if (passengerlist->head == NULL)
@@ -184,32 +184,6 @@ void getbookingcode(char *userID)
         printf("Your booking code: %s\r\n", code_s);
     }
 }
-bool check_passenger_exist(char *code)
-{
-    bool check = false;
-    Passenger *current = passengerlist->head;
-    if (passengerlist->head == NULL)
-    {
-        return false;
-    }
-    for (; current != NULL; current = current->next)
-    {
-        char *current_code = current->code;
-
-        if (!strcmp(current_code, code))
-        {
-            check = true;
-        }
-    }
-    if (check == false)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
-}
 void change_passenger_datetime(char *code, char *date, char *time)
 {
     Passenger *current = passengerlist->head;
@@ -246,6 +220,33 @@ void change_passenger_typeprice(char *code, char *type, int cost)
             current->type = type;
             current->cost = cost;
         }
+    }
+}
+
+bool check_passenger_exist(char *code)
+{
+    bool check = false;
+    Passenger *current = passengerlist->head;
+    if (passengerlist->head == NULL)
+    {
+        return false;
+    }
+    for (; current != NULL; current = current->next)
+    {
+        char *current_code = current->code;
+
+        if (!strcmp(current_code, code))
+        {
+            check = true;
+        }
+    }
+    if (check == false)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
     }
 }
 

@@ -32,7 +32,7 @@ Passengerlist *passengerlist;
 City *createcity(int No, char *City, int fare);
 Citylist *makecitylist();
 void addcity(int No, char *City, int fare);
-void displayallcity();
+void print_allcity();
 int calticketprice(int from, int to);
 char *findcity(int findNo);
 
@@ -45,7 +45,7 @@ char *addpassenger(char *userID,
                    char *seat, char *date, char *time, char *type, int cost);
 void gen_code(char **code);
 void displaypassenger();
-void getpassenger(char *code);
+void print_passenger_data(char *code);
 void deletepassenger(char *code);
 void getbookingcode(char *userID);
 bool check_passenger_exist(char *code);

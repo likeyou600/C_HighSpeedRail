@@ -24,7 +24,7 @@ void Booking()
 
     printf("\r\n");
     printf("Please enter the starting and ending stations according to the county and city numbers\r\n");
-    displayallcity(citylist);
+    print_allcity(citylist);
     printf("\r\n");
     printf("Departure Station/Arrival Station >> ");
 
